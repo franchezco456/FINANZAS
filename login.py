@@ -8,18 +8,18 @@ frame = CTkFrame(master=app, fg_color="#000000", border_color="#FFCC70", border_
 frame.pack(expand=True)
 
 #Ingreso botones y titulo
-Titulo= CTkLabel(master=frame, text="INICIO DE SESION", text_color="#801B1B")
-Usuario= CTkEntry(master=frame, placeholder_text="Ingrese usuario")
-Contraseña= CTkEntry(master=frame, placeholder_text="Ingrese Contraseña")
-Ingresar= CTkButton(master=frame, text="Ingresar")
-Registrar= CTkButton(master=frame, text="Registrarse")
+titulo= CTkLabel(master=frame, text="INICIO DE SESION", text_color="#801B1B")
+usuario= CTkEntry(master=frame, placeholder_text="Ingrese usuario")
+contraseña= CTkEntry(master=frame, placeholder_text="Ingrese Contraseña")
+ingresar= CTkButton(master=frame, text="Ingresar")
+registrar= CTkButton(master=frame, text="Registrarse")
 
 #Colocar los botones
-Titulo.pack(anchor="s", expand=True, pady=10, padx=30)
-Usuario.pack(anchor="s", expand=True, pady =10, padx=30)
-Contraseña.pack(anchor="s", expand=True, pady =10, padx=30)
-Ingresar.pack(anchor="n", expand=True, padx=30, pady=20)
-Registrar.pack(anchor="n", expand=True, padx=30, pady=20)
+titulo.pack(anchor="s", expand=True, pady=10, padx=30)
+usuario.pack(anchor="s", expand=True, pady =10, padx=30)
+contraseña.pack(anchor="s", expand=True, pady =10, padx=30)
+ingresar.pack(anchor="n", expand=True, padx=30, pady=20)
+registrar.pack(anchor="n", expand=True, padx=30, pady=20)
 app.mainloop()
 
 #img= Image.open("mensaje.jpg")
