@@ -9,8 +9,8 @@ def verificacion_existe(Id,password):
  cur.execute("select ID, PASSWORD from users_passwords")
  #imprimimos los datos 
  for ID, PASSWORD in cur.fetchall():
-    print(ID , " | " , PASSWORD)
- #se cierra la conexion a la base de datos
+  if(ID==Id and PASSWORD==password):
+   print("true")
  conexionUsuarios.close()
 
 def crear_Usuario():

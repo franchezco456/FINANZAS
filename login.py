@@ -3,7 +3,7 @@ from metodos.database import verificacion_existe
 #Crear la ventana
 app = CTk() 
 def credenciales_usuario():
-     user_id=usuario.get()
+     user_id=int(usuario.get())
      print(user_id)
      user_password=contraseña.get()
      print(user_password)
