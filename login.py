@@ -1,13 +1,20 @@
 from customtkinter import *
-from metodos.database import verificacion_existe
+from metodos.database import verificacion_existe,crear_Usuario
 #Crear la ventana
 app = CTk() 
-def credenciales_usuario():
+def verificar_usuario():
      user_id=int(usuario.get())
      print(user_id)
      user_password=contraseña.get()
      print(user_password)
      verificacion_existe(user_id,user_password)
+
+def agregar_usuario():
+     user_id=int(usuario.get())
+     print(user_id)
+     user_password=contraseña.get()
+     print(user_password)
+     crear_Usuario(user_id,user_password)
 
 
 
@@ -25,8 +32,8 @@ frame.pack(expand=True)
 titulo= CTkLabel(master=frame, text="INICIO DE SESION", text_color="#801B1B")
 usuario= CTkEntry(master=frame, placeholder_text="Ingrese usuario")
 contraseña= CTkEntry(master=frame, placeholder_text="Ingrese Contraseña")
-ingresar= CTkButton(master=frame, text="Ingresar",command=credenciales_usuario)
-registrar= CTkButton(master=frame, text="Registrarse")
+ingresar= CTkButton(master=frame, text="Ingresar",command=verificar_usuario)
+registrar= CTkButton(master=frame, text="Registrarse", command=agregar_usuario)
 
 #Colocar los botones
 titulo.pack(anchor="s", expand=True, pady=10, padx=30)

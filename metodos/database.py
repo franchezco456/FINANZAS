@@ -13,7 +13,25 @@ def verificacion_existe(Id,password):
    print("true")
  conexionUsuarios.close()
 
-def crear_Usuario():
-  pass
-
-
+def crear_Usuario(id_usuario, password):
+    # Establecer conexión con la base de datos
+    conexion = pymysql.connect(host='localhost', user='root', passwd='root', db='usuarios')
+    cursor = conexion.cursor()
+    
+    # Crear nuevo usuario
+    try:
+        # Preparar la consulta SQL para insertar un nuevo usuario
+        sql = "INSERT INTO users_passwords (ID, PASSWORD) VALUES (%s, %s)"
+        # Ejecutar la consulta SQL
+        cursor.execute(sql, (id_usuario, password))
+        # Confirmar la transacción
+        conexion.commit()
+        print("Usuario agregado exitosamente.")
+    except pymysql.Error as e:
+        # Revertir en caso de error
+        conexion.rollback()
+        print(f"Error al agregar el usuario: {e}")
+    finally:
+        # Cerrar la conexión
+        cursor.close()
+        conexion.close()
