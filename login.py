@@ -58,7 +58,7 @@ contraseña.grid(columnspan =2, row=2, padx=4, pady=4)
 
 #Boton iniciar sesion
 bt_iniciar= CTkButton(ventana, border_color=c_azul, fg_color= c_negro, 
-                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='Iniciar Sesion', height=40)
+                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='Iniciar Sesion', height=40,command=credenciales_usuario)
 bt_iniciar.grid(columnspan=1, row= 4, pady=4, padx=4)
 
 #Boton registrarse
