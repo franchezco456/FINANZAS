@@ -1,7 +1,12 @@
-from customtkinter import *
+from customtkinter import CTk, CTkFrame
+
+from tkinter import Tk, PhotoImage
+
 from metodos.database import verificacion_existe
-#Crear la ventana
-app = CTk() 
+#Variables:
+c_negro = '#010101'
+
+
 def credenciales_usuario():
      user_id=int(usuario.get())
      print(user_id)
@@ -12,29 +17,21 @@ def credenciales_usuario():
 
 
 
-
-
-
-
+ventana = Tk()
 #Colocar titulo
-app.title("INICIO DE SESION")
-#Crear un cuadro dentro de la ventana
-frame = CTkFrame(master=app, fg_color="#000000", border_color="#FFCC70", border_width=2)
-frame.pack(expand=True)
-#Ingreso botones y titulo
-titulo= CTkLabel(master=frame, text="INICIO DE SESION", text_color="#801B1B")
-usuario= CTkEntry(master=frame, placeholder_text="Ingrese usuario")
-contraseña= CTkEntry(master=frame, placeholder_text="Ingrese Contraseña")
-ingresar= CTkButton(master=frame, text="Ingresar",command=credenciales_usuario)
-registrar= CTkButton(master=frame, text="Registrarse")
+ventana.title("INICIAR DE SESION")
+#Tamaño
+ventana.geometry('500x600+350+20')
+#Tamaño minimo
+ventana.minsize(480,500)
+#Evitar ajustar el tamaño manualmente
+ventana.resizable(width=False, height=False)
+#darle un color
+ventana.config(bg= c_negro)
 
-#Colocar los botones
-titulo.pack(anchor="s", expand=True, pady=10, padx=30)
-usuario.pack(anchor="s", expand=True, pady =10, padx=30)
-contraseña.pack(anchor="s", expand=True, pady =10, padx=30)
-ingresar.pack(anchor="n", expand=True, padx=30, pady=20)
-registrar.pack(anchor="n", expand=True, padx=30, pady=20)
-app.mainloop()
+#Iconito 
+icono = PhotoImage (file='pictures/icono.png')
 
-#img= Image.open("mensaje.jpg")
-#image=CTkImage(dark_image=img, light_image=img))
+#Mostrar icono
+ventana.iconphoto(True, icono)
+ventana.mainloop()
