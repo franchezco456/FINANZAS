@@ -1,47 +1,75 @@
-from customtkinter import *
-from metodos.database import verificacion_existe,crear_Usuario
-#Crear la ventana
-app = CTk() 
-def verificar_usuario():
+from customtkinter import CTk, CTkFrame, CTkEntry, CTkButton, CTkLabel
+from tkinter import Tk, PhotoImage
+
+from metodos.database import verificacion_existe
+#Variables:
+c_negro = '#010101'
+c_azul  = '#3B83BD'
+c_morado= '#2cb67d'
+
+def credenciales_usuario():
      user_id=int(usuario.get())
      print(user_id)
      user_password=contraseña.get()
      print(user_password)
      verificacion_existe(user_id,user_password)
 
-def agregar_usuario():
-     user_id=int(usuario.get())
-     print(user_id)
-     user_password=contraseña.get()
-     print(user_password)
-     crear_Usuario(user_id,user_password)
 
 
 
-
-
-
-
-
+ventana = Tk()
+#CARACTERISTICAS DE LA VENTANA_
 #Colocar titulo
-app.title("INICIO DE SESION")
-#Crear un cuadro dentro de la ventana
-frame = CTkFrame(master=app, fg_color="#000000", border_color="#FFCC70", border_width=2)
-frame.pack(expand=True)
-#Ingreso botones y titulo
-titulo= CTkLabel(master=frame, text="INICIO DE SESION", text_color="#801B1B")
-usuario= CTkEntry(master=frame, placeholder_text="Ingrese usuario")
-contraseña= CTkEntry(master=frame, placeholder_text="Ingrese Contraseña")
-ingresar= CTkButton(master=frame, text="Ingresar",command=verificar_usuario)
-registrar= CTkButton(master=frame, text="Registrarse", command=agregar_usuario)
+ventana.title("INICIO DE SESION")
+#Tamaño
+ventana.geometry('500x600+350+20')
+#Tamaño minimo
+ventana.minsize(480,500)
+#Evitar ajustar el tamaño manualmente
+ventana.resizable(width=False, height=False)
+#darle un color
+ventana.config(bg= c_negro)
 
-#Colocar los botones
-titulo.pack(anchor="s", expand=True, pady=10, padx=30)
-usuario.pack(anchor="s", expand=True, pady =10, padx=30)
-contraseña.pack(anchor="s", expand=True, pady =10, padx=30)
-ingresar.pack(anchor="n", expand=True, padx=30, pady=20)
-registrar.pack(anchor="n", expand=True, padx=30, pady=20)
-app.mainloop()
+#Imagenes usadas: 
+#Iconito 
+icono = PhotoImage (file='pictures/icono.png')
+icono2 =  PhotoImage (file='pictures/icono_2.png')
 
-#img= Image.open("mensaje.jpg")
-#image=CTkImage(dark_image=img, light_image=img))
+#Botones y otras cosas
+ventana.columnconfigure(0,weight=1)
+ventana.rowconfigure(0, weight=1)
+
+#Colocar un icono a la ventana
+CTkLabel(ventana, text='', image=icono2).grid(columnspan =2, row=0)
+
+#Usuario y contraseña_
+#Se crea el usuario y se establecen los parametros como el color tamaño etc que tendra la entrda
+usuario = CTkEntry(ventana, placeholder_text = 'Correo Electronico', 
+                   border_color=c_azul, fg_color= c_negro, width=220, height=40)
+#Usando .grid hace que se muestren en la interfaz grafica
+usuario.grid(columnspan =2, row=1, padx=4, pady=4)
+contraseña = CTkEntry(ventana, placeholder_text = 'Contraseña', 
+                      border_color=c_azul, fg_color= c_negro, width=220, height=40)
+contraseña.grid(columnspan =2, row=2, padx=4, pady=4)
+
+
+#Boton recordarme
+
+
+#Boton iniciar sesion
+bt_iniciar= CTkButton(ventana, border_color=c_azul, fg_color= c_negro, 
+                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='Iniciar Sesion', height=40)
+bt_iniciar.grid(columnspan=1, row= 4, pady=4, padx=4)
+
+#Boton registrarse
+bt_Registrar= CTkButton(ventana, border_color=c_azul, fg_color= c_negro, 
+                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='Registrarse', height=40)
+bt_Registrar.grid(columnspan=2, row= 5, pady=4, padx=4)
+
+
+
+
+
+#Mostrar icono
+ventana.iconphoto(True, icono)
+ventana.mainloop()
