@@ -1,12 +1,12 @@
-#Importar cosas
 from customtkinter import CTk, CTkFrame, CTkEntry, CTkButton, CTkLabel
 from tkinter import Tk, PhotoImage
 #Lista de Variables
 c_negro = '#010101'
 c_azul  = '#3B83BD'
 
-#Crear ventanas
+#Crear ventanas 
 aplicacion= Tk()
+
 
 
 #Ajustes de la ventana:
@@ -18,10 +18,13 @@ icono = PhotoImage (file='pictures/icono.png')
 aplicacion.iconphoto(True, icono)
 aplicacion.config(bg= c_negro)
 
+
+frame1= CTkFrame(aplicacion, fg_color=c_azul)
+frame1.grid(column=0,row=0, sticky='nsew',padx=30, pady=30)
+
+
+
 aplicacion.columnconfigure(0,weight=1)
 aplicacion.rowconfigure(0, weight=1)
-#Cosas
-CTkLabel(aplicacion, text='Grafico pastel').grid(columnspan =1, row=0)
-
 
 aplicacion.mainloop()
