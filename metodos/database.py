@@ -36,22 +36,4 @@ def crear_Usuario(id_usuario, password):
         cursor.close()
         conexion.close()
 
-def ingresos(id_usuario, categoria, cantidad,cuenta):
-   conexion = pymysql.connect(host='localhost', user='root', passwd='root', db='usuarios')
-   cursor = conexion.cursor()
-   try:
-        # Preparar la consulta SQL para insertar un nuevo usuario
-        sql = "INSERT INTO users_passwords (ID, PASSWORD) VALUES (%s, %s)"
-        # Ejecutar la consulta SQL
-        cursor.execute(sql, (id_usuario, password))
-        # Confirmar la transacción
-        conexion.commit()
-        print("Usuario agregado exitosamente.")
-   except pymysql.Error as e:
-        # Revertir en caso de error
-        conexion.rollback()
-        print(f"Error al agregar el usuario: {e}")
-   finally:
-        # Cerrar la conexión
-        cursor.close()
-        conexion.close()
+
