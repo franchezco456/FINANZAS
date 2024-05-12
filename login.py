@@ -1,6 +1,6 @@
 from customtkinter import CTk, CTkFrame, CTkEntry, CTkButton, CTkLabel
 from tkinter import Tk, PhotoImage
-from metodos.database import verificacion_existe, crear_Usuario
+from metodos.databaselogin import verificacion_existe, crear_Usuario
 #Variables:
 c_negro = '#010101'
 c_azul  = '#3B83BD'
