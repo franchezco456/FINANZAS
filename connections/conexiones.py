@@ -5,6 +5,8 @@ def connect_to_database():
 
 
 # Función para filtrar y sumar
+#corregir dependencias
+
 def filtrar_y_sumar(id, CUENTA):
     conexion = connect_to_database()
     try:
