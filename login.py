@@ -1,13 +1,13 @@
 from customtkinter import CTk, CTkFrame, CTkEntry, CTkButton, CTkLabel
 from tkinter import Tk, PhotoImage
-
-from metodos.database import verificacion_existe, crear_Usuario
+from metodos.databaselogin import verificacion_existe, crear_Usuario
 #Variables:
 c_negro = '#010101'
 c_azul  = '#3B83BD'
 c_morado= '#2cb67d'
 
 def credenciales_usuario():
+
      user_id=int(usuario.get())
      print(user_id)
      user_password=contraseña.get()
