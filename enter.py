@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import Tk, PhotoImage, ttk
 from metodos.databaselogin import leer_desde_archivo
 from metodos.filtrado_datos import total
+from metodos.ingresos_egresos import ingreso,egreso
 #Lista de Variables
 c_negro = '#010101'
 c_azul  = '#3B83BD'
@@ -80,14 +81,19 @@ usuario=CTkLabel(frame_inferior,font=("Arial",18),text= id,
 
 
 #BOTONES Y ENTRADAS
-ingreso = CTkEntry(frame_superior,font=("Arial",18),placeholder_text = 'Ingrese los ingresos aqui',
+aceptar = CTkEntry(frame_superior,font=("Arial",18),placeholder_text= '0',
                    border_color=c_azul, fg_color= c_negro, width=250, height=30)
-ingreso.place(x=350, y=200)
+aceptar.place(x=350, y=200)
+
+def subir():
+    categoria=cb_categorias.get()
+    cuenta=cb_cuentas.get()
+    canti=float(aceptar.get())
+    ingreso(id,categoria,canti,cuenta)
 
 bt_ingresar= CTkButton(frame_superior,text="ACEPTAR", font=("Arial",20),text_color=c_azul, border_color=c_azul, fg_color= c_negro, 
-                      hover_color=c_morado, corner_radius=12, border_width=2 , height=40)
+                      hover_color=c_morado, corner_radius=12, border_width=2 , height=40,command=subir)
 bt_ingresar.place(x=400, y=250)
-
 
 
 

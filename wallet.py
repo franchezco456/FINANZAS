@@ -61,9 +61,6 @@ c_efectivo=CTkLabel(c_frame, text=efectivo).grid(column=2, row=1,padx=10, pady=1
 CTkLabel(c_frame, text='CUENTA AHORROS',bg_color=c_azul,  font=("Arial",12),width=125, text_color=c_blanco).grid(column=3, row=0,padx=10, pady=10)
 c_ahorros=CTkLabel(c_frame, text=ahorros).grid(column=3, row=1, padx=10, pady=10)
 
-#Zona Cuadro Historial
-h_frame= CTkFrame(frame_principal, border_color=c_azul, fg_color= c_negro, border_width=2,width=500, height=350)
-h_frame.place(x=230, y=150)
 
 
 
