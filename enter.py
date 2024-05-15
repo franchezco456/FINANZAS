@@ -6,7 +6,8 @@ c_negro = '#010101'
 c_azul  = '#3B83BD'
 c_morado= '#56145b'
 c_verde = '#008000'
-c_blanco = '#FFFFFF'
+c_blanco= '#FFFFFF'
+c_gris  = '#3B3D3E'
 
 #Crear ventanas y configuracion
 ventana= Tk()
@@ -29,7 +30,6 @@ frame_principal=CTkFrame(ventana, fg_color= c_negro, width=680, height=670)
 frame_principal.grid(columnspan=1,row=0, sticky='nsew',padx=10, pady=20)
 frame_principal.grid_rowconfigure(0, weight=1)
 frame_principal.grid_columnconfigure(0, weight=1)
-ventana.iconphoto(True, icono)
 fondito = Label(frame_principal, image=fondo)
 fondito.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -43,14 +43,14 @@ frame_superior.grid_columnconfigure(1, weight=1)
 categorias = ["Comidas","Compras","Viviendas","Transporte","Vehiculos","Vida y Entretenimineto","Comunicaciones","Gastos financieros",
               "Inversiones","Ingresos","Otros..."]
 cb_categorias = ttk.Combobox(frame_superior, values=categorias,state='readonly',font=("Arial",12))
-cb_categorias.place(x=130, y=50)
+cb_categorias.place(x=320, y=50)
 
 cuentas= ["Efectivo","Banco","Ahorros"]
 cb_cuentas=ttk.Combobox(frame_superior, values=cuentas,state='readonly',font=("Arial",12))
-cb_cuentas.place(x=130, y=110)
+cb_cuentas.place(x=320, y=110)
 
-CTkLabel(frame_superior, corner_radius=12,bg_color=c_azul, text='CATEGORIAS', font=("Arial",12), text_color=c_blanco).place(x=10, y=50)
-CTkLabel(frame_superior, corner_radius=12,bg_color=c_azul, text='CUENTA', font=("Arial",12),width=100, text_color=c_blanco).place(x=10, y=110)
+CTkLabel(frame_superior, corner_radius=12,bg_color=c_azul, text='CATEGORIAS', font=("Arial",12), text_color=c_blanco).place(x=550, y=50)
+CTkLabel(frame_superior, corner_radius=12,bg_color=c_azul, text='CUENTA', font=("Arial",12),width=100, text_color=c_blanco).place(x=550, y=110)
 
 
 
@@ -67,20 +67,29 @@ usuario=CTkLabel(frame_inferior,font=("Arial",18),text= "Ingrese El Usuario Aqui
 
 
 
-
-#Botones
+#BOTONES Y ENTRADAS
 ingreso = CTkEntry(frame_superior,font=("Arial",18),placeholder_text = 'Ingrese los ingresos aqui',
                    border_color=c_azul, fg_color= c_negro, width=250, height=30)
-ingreso.place(x=20, y=200)
+ingreso.place(x=350, y=200)
 
 bt_ingresar= CTkButton(frame_superior,text="ACEPTAR", font=("Arial",20),text_color=c_azul, border_color=c_azul, fg_color= c_negro, 
                       hover_color=c_morado, corner_radius=12, border_width=2 , height=40)
-bt_ingresar.place(x=50, y=250)
+bt_ingresar.place(x=400, y=250)
 
 
 
 
 
+
+frame_inst=CTkFrame(frame_superior,corner_radius=12,border_width=2,border_color=c_azul, fg_color=  c_gris,width=200, height=400)
+frame_inst.place(x=40, y=20)
+CTkLabel(frame_inst, corner_radius=12,bg_color=c_azul, text='INSTRUCCIONES PARA TONTOS', font=("Arial",12), text_color=c_blanco).grid(column=1,row=0)
+CTkLabel(frame_inst, corner_radius=12,text='1.Seleccionar una Categoria', font=("Arial",12), text_color=c_blanco).grid(column=1,row=1)
+CTkLabel(frame_inst, corner_radius=12,text='2.Seleccionar una cuenta', font=("Arial",12), text_color=c_blanco).grid(column=1,row=2)
+CTkLabel(frame_inst, corner_radius=12, text='3.Ingresar los ingresos', font=("Arial",12), text_color=c_blanco).grid(column=1,row=3)
+CTkLabel(frame_inst, corner_radius=12, text='4.Presionar el Boton Aceptar', font=("Arial",12), text_color=c_blanco).grid(column=1,row=4)
+CTkLabel(frame_inst, corner_radius=12, text='5.Presionar el Boton en la\nEsquina superior izquierda\nsi desea volver', font=("Arial",12),
+          text_color=c_blanco).grid(column=1,row=4, pady=10)
 
 bt_volver= CTkButton(frame_principal,image=icono_back,text='',border_color=c_azul, fg_color=c_negro,
                       hover_color=c_verde, corner_radius=12, border_width=2 ,height=5, width=5)
