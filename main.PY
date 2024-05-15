@@ -1,2 +1,2 @@
-import login
-login.ACTIVE()
+from login import ventana
+ventana.mainloop()
