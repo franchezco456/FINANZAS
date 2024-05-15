@@ -98,12 +98,8 @@ bt_ingresos= CTkButton(c_frameb, border_color=c_azul, fg_color= c_negro,
                       hover_color=c_morado, corner_radius=12, border_width=2 ,text='INGRESAR INGRESOS', height=40)
 bt_ingresos.grid(row=0, column=0, pady=12, padx=30)
 
-bt_imprimir= CTkButton(c_frameb, border_color=c_azul, fg_color= c_negro, 
-                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='IMPRIMIR HISTORIAL', height=40)
-bt_imprimir.grid(row=0, column=1, pady=4, padx=150)
-
 bt_gastos= CTkButton(c_frameb, border_color=c_azul, fg_color= c_negro, 
-                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='INGRESAR INGRESOS', height=40)
+                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='INGRESAR GASTOS', height=40)
 bt_gastos.grid(row=0, column=2, pady=4, padx=30)
 
 
