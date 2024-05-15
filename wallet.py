@@ -20,6 +20,9 @@ def obtener_id():
     return x
 def open_ingreso():
     subprocess.Popen(["python","enter.py"])
+
+def open_gasto():
+    subprocess.Popen(["python","pay.py"])
 id=obtener_id()
 def cantidad_labels(id,cuenta):
     a= cantidad_por_cuenta(id,cuenta)
@@ -74,7 +77,7 @@ bt_ingresos= CTkButton(frame_principal, border_color=c_azul, fg_color= c_negro,
 bt_ingresos.place(x=300,y=550)
 
 bt_gastos= CTkButton(frame_principal, border_color=c_azul, fg_color= c_negro, 
-                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='INGRESAR GASTOS', height=40)
+                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='INGRESAR GASTOS', height=40,command=open_gasto)
 bt_gastos.place(x=500,y=550)
 
 
