@@ -35,7 +35,7 @@ frame_superior.place(x=1, y=1)
 frame_superior.grid_rowconfigure(1, weight=1)
 frame_superior.grid_columnconfigure(1, weight=1) 
 
-categorias = ["Comidas","Compras","Viviendas","Trasnporte","Vehiculos","Vida y Entretenimineto","Comunicaciones","Gastos financieros",
+categorias = ["Comidas","Compras","Viviendas","Transporte","Vehiculos","Vida y Entretenimineto","Comunicaciones","Gastos financieros",
               "Inversiones","Ingresos","Otros..."]
 cb_categorias = ttk.Combobox(frame_superior, values=categorias,state='readonly',font=("Arial",12))
 cb_categorias.place(x=130, y=50)
