@@ -9,32 +9,37 @@ c_verde = '#008000'
 c_blanco = '#FFFFFF'
 
 #Crear ventanas y configuracion
-enter= Tk()
-enter.title("Ingreso de Ingresos")
-enter.geometry('700x500+350+20')
-enter.minsize(680,700)
-enter.resizable(width=False, height=False)
-enter.config(bg= c_negro)
+ventana= Tk()
+ventana.title("Ingreso de Ingresos")
+ventana.geometry('700x500+350+20')
+ventana.minsize(680,700)
+ventana.resizable(width=False, height=False)
+ventana.config(bg= c_negro)
 #Imagenes
-icono = PhotoImage (file='pictures/icono.png')
 icono_back = PhotoImage (file='pictures/back.png')
-icono_water= PhotoImage (file='pictures/water.png')
-enter.iconphoto(True, icono)
-
+icono = PhotoImage (file='pictures/icono.png')
+fondo = PhotoImage (file='pictures/fondo.png')
+ventana.iconphoto(True, icono)
+ventana.config(bg= c_negro)
+fondito = Label(ventana, image=fondo)
+fondito.place(x=0, y=0, relwidth=1, relheight=1)
 
 #Frame/ventana
-frame_principal=CTkFrame(enter, fg_color= c_negro, width=680, height=670)
+frame_principal=CTkFrame(ventana, fg_color= c_negro, width=680, height=670)
 frame_principal.grid(columnspan=1,row=0, sticky='nsew',padx=10, pady=20)
 frame_principal.grid_rowconfigure(0, weight=1)
 frame_principal.grid_columnconfigure(0, weight=1)
+ventana.iconphoto(True, icono)
+fondito = Label(frame_principal, image=fondo)
+fondito.place(x=0, y=0, relwidth=1, relheight=1)
 
-
-
+#Zona de Frames
+#Frame superior
 frame_superior=CTkFrame(frame_principal,corner_radius=12,border_width=2,border_color=c_azul, fg_color= c_negro, width=670, height=500)
 frame_superior.place(x=1, y=1)
 frame_superior.grid_rowconfigure(1, weight=1)
 frame_superior.grid_columnconfigure(1, weight=1) 
-
+#Opcion categorias
 categorias = ["Comidas","Compras","Viviendas","Transporte","Vehiculos","Vida y Entretenimineto","Comunicaciones","Gastos financieros",
               "Inversiones","Ingresos","Otros..."]
 cb_categorias = ttk.Combobox(frame_superior, values=categorias,state='readonly',font=("Arial",12))
@@ -47,6 +52,9 @@ cb_cuentas.place(x=130, y=110)
 CTkLabel(frame_superior, corner_radius=12,bg_color=c_azul, text='CATEGORIAS', font=("Arial",12), text_color=c_blanco).place(x=10, y=50)
 CTkLabel(frame_superior, corner_radius=12,bg_color=c_azul, text='CUENTA', font=("Arial",12),width=100, text_color=c_blanco).place(x=10, y=110)
 
+
+
+#Frame inferior
 frame_inferior=CTkFrame(frame_principal,corner_radius=12,border_width=2,border_color=c_azul, fg_color=  c_negro,width=670, height=150)
 frame_inferior.place(x=1, y=510)
 
@@ -54,11 +62,13 @@ CTkLabel(frame_inferior, corner_radius=12,bg_color=c_azul, text='SALDO ACTUAL', 
 saldo=CTkLabel(frame_inferior,text='$0000000',corner_radius=12,fg_color=c_azul, font=("Arial",18), text_color=c_blanco).place(x=150, y=80)
 
 CTkLabel(frame_inferior, corner_radius=12,bg_color=c_azul, text='USUARIO ACTUAL', font=("Arial",12), text_color=c_blanco).place(x=10, y=20)
-usuario=CTkEntry(frame_inferior,font=("Arial",18),placeholder_text = 'Ingrese El Usuario Aqui',
-                   border_color=c_azul, fg_color= c_negro, width=250, height=30).place(x=150, y=20)
+usuario=CTkLabel(frame_inferior,font=("Arial",18),text= "Ingrese El Usuario Aqui",
+                    fg_color= c_azul, width=250, height=30).place(x=150, y=20)
 
 
-#Boton
+
+
+#Botones
 ingreso = CTkEntry(frame_superior,font=("Arial",18),placeholder_text = 'Ingrese los ingresos aqui',
                    border_color=c_azul, fg_color= c_negro, width=250, height=30)
 ingreso.place(x=20, y=200)
@@ -79,4 +89,4 @@ bt_volver.place(x=1, y=1)
 
 
 
-enter.mainloop()
+ventana.mainloop()
