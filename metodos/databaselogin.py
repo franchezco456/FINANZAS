@@ -12,6 +12,7 @@ def verificacion_existe(Id,password):
   for ID, PASSWORD in cur.fetchall():
    if(ID==Id and PASSWORD==password):
     subprocess.Popen(["python", "wallet.py"])
+    UISS(Id)
   conexionUsuarios.close()
 
 def crear_Usuario(id_usuario, password):
@@ -36,5 +37,25 @@ def crear_Usuario(id_usuario, password):
          # Cerrar la conexión
          cursor.close()
          conexion.close()
+
+def UISS(numero):
+  nombre_archivo = "mi_archivo.txt"
+    # Guardar el ultimo id en el archivo
+  with open(nombre_archivo, "w") as archivo:
+        archivo.write(str(numero))
+
+def leer_desde_archivo():
+    # Nombre del archivo
+    nombre_archivo = "mi_archivo.txt"
+
+    try:
+        # Leer el contenido del archivo
+        with open(nombre_archivo, "r") as archivo:
+            contenido = archivo.read()
+            numero_leido = int(contenido)
+            return numero_leido
+    except FileNotFoundError:
+        print("El archivo no existe o no se puede leer.")
+        return None
 
 

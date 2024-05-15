@@ -6,21 +6,14 @@ from metodos.databaselogin import verificacion_existe, crear_Usuario
 c_negro = '#010101'
 c_azul  = '#3B83BD'
 c_morado= '#2cb67d'
-
 def credenciales_usuario():
-
      user_id=int(usuario.get())
-     print(user_id)
      user_password=contraseña.get()
-     print(user_password)
-     verificacion_existe(user_id,user_password)
-    
+     verificacion_existe(user_id,user_password)   
 
 def new_user():
      user_id=int(usuario.get())
-     print(user_id)
      user_password=contraseña.get()
-     print(user_password)
      crear_Usuario(user_id,user_password)
 
 
