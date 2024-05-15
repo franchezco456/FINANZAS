@@ -1,6 +1,8 @@
 from customtkinter import CTk, CTkFrame, CTkButton, CTkLabel, CTkEntry
 from tkinter import *
 from tkinter import Tk, PhotoImage, ttk
+from metodos.databaselogin import leer_desde_archivo
+from metodos.filtrado_datos import total
 #Lista de Variables
 c_negro = '#010101'
 c_azul  = '#3B83BD'
@@ -8,7 +10,17 @@ c_morado= '#56145b'
 c_verde = '#008000'
 c_blanco= '#FFFFFF'
 c_gris  = '#3B3D3E'
+def obtener_id():
+    x=leer_desde_archivo()
+    return x
 
+id=obtener_id()
+
+def cantidad(x):
+    waos=total(x)
+    return waos
+
+gg=cantidad(id)
 #Crear ventanas y configuracion
 ventana= Tk()
 ventana.title("Ingreso de Ingresos")
@@ -59,10 +71,10 @@ frame_inferior=CTkFrame(frame_principal,corner_radius=12,border_width=2,border_c
 frame_inferior.place(x=1, y=510)
 
 CTkLabel(frame_inferior, corner_radius=12,bg_color=c_azul, text='SALDO ACTUAL', font=("Arial",12),width=125, text_color=c_blanco).place(x=10, y=80)
-saldo=CTkLabel(frame_inferior,text='$0000000',corner_radius=12,fg_color=c_azul, font=("Arial",18), text_color=c_blanco).place(x=150, y=80)
+saldo=CTkLabel(frame_inferior,text=gg,corner_radius=12,fg_color=c_azul, font=("Arial",18), text_color=c_blanco).place(x=150, y=80)
 
 CTkLabel(frame_inferior, corner_radius=12,bg_color=c_azul, text='USUARIO ACTUAL', font=("Arial",12), text_color=c_blanco).place(x=10, y=20)
-usuario=CTkLabel(frame_inferior,font=("Arial",18),text= "Ingrese El Usuario Aqui",
+usuario=CTkLabel(frame_inferior,font=("Arial",18),text= id,
                     fg_color= c_azul, width=250, height=30).place(x=150, y=20)
 
 

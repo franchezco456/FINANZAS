@@ -20,13 +20,17 @@ def cantidad_por_cuenta(id, cuenta):
     finally:
         conexion.close()
 
-def datos_tabla(id):
-    conexion=connect_to_database()
-    cursor=conexion.cursor()
+def total(id):
+    conexion = connect_to_database()
     try:
-      cursor.execute("SELECT * FROM finanzas_user WHERE ID = %s",(id,))
-      datos=cursor.fetchall()
-      return datos
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT SUM(cantidad) FROM finanzas_user WHERE ID = %s ", (id))
+            resultado = cursor.fetchone()[0]
+            if resultado is None:
+               return "$0.0"
+            else:
+               x=str(resultado)
+               return "$"+x
     except pymysql.Error as e:
         print(f"Error: {e}")
     finally:
