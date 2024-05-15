@@ -13,7 +13,8 @@ def cantidad_por_cuenta(id, cuenta):
             if resultado is None:
                return "$0.0"
             else:
-               return "$"+resultado
+               x=str(resultado)
+               return "$"+x
     except pymysql.Error as e:
         print(f"Error: {e}")
     finally:

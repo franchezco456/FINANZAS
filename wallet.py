@@ -2,6 +2,8 @@ from customtkinter import CTk, CTkFrame, CTkButton, CTkLabel
 from tkinter import *
 from tkinter import Tk, PhotoImage, ttk
 import subprocess
+from metodos.filtrado_datos import cantidad_por_cuenta
+from metodos.databaselogin import leer_desde_archivo
 
 #Lista de Variables
 c_negro = '#010101'
@@ -13,10 +15,21 @@ c_blanco = '#FFFFFF'
 
 
 #Procesos
+def obtener_id():
+    x=leer_desde_archivo()
+    return x
 def open_ingreso():
     subprocess.Popen(["python","enter.py"])
+id=obtener_id()
+def cantidad_labels(id,cuenta):
+    a= cantidad_por_cuenta(id,cuenta)
+    return a
 
 
+
+efectivo=cantidad_labels(id,"Efectivo")
+banco=cantidad_labels(id,"Banco" )
+ahorros=cantidad_labels(id,"Ahorros")
 #Crear ventanas 
 ventana= Tk()
 ventana.title("Administrador de Finanzas")
@@ -41,21 +54,18 @@ fondito.place(x=0, y=0, relwidth=1, relheight=1)
 #Frame de cuentas
 c_frame=CTkFrame(frame_principal,corner_radius=12,border_width=2,border_color=c_azul, fg_color= c_negro, width=480, height=100)
 c_frame.place(x=250, y=20)
-
 CTkLabel(c_frame, text='CUENTA BANCARIA',bg_color=c_azul,  font=("Arial",12),width=125, text_color=c_blanco).grid(column=1, row=0,padx=10, pady=10)
-c_bancaria=CTkLabel(c_frame, text='$00000').grid(column=1, row=1,padx=10, pady=10)
+c_bancaria=CTkLabel(c_frame, text=banco).grid(column=1, row=1,padx=10, pady=10)
 CTkLabel(c_frame, text='CUENTA EFECTIVO',bg_color=c_azul,  font=("Arial",12),width=125, text_color=c_blanco).grid(column=2, row=0,padx=10, pady=10)
-c_efectivo=CTkLabel(c_frame, text='$00000').grid(column=2, row=1,padx=10, pady=10)
+c_efectivo=CTkLabel(c_frame, text=efectivo).grid(column=2, row=1,padx=10, pady=10)
 CTkLabel(c_frame, text='CUENTA AHORROS',bg_color=c_azul,  font=("Arial",12),width=125, text_color=c_blanco).grid(column=3, row=0,padx=10, pady=10)
-c_ahorros=CTkLabel(c_frame, text='$00000').grid(column=3, row=1, padx=10, pady=10)
+c_ahorros=CTkLabel(c_frame, text=ahorros).grid(column=3, row=1, padx=10, pady=10)
 
 #Zona Cuadro Historial
 h_frame= CTkFrame(frame_principal, border_color=c_azul, fg_color= c_negro, border_width=2,width=500, height=350)
 h_frame.place(x=230, y=150)
 
-historial= ttk.Treeview(h_frame)
-historial.insert("",END, text="ELEMENTO 1")
-historial.place(x=10,y=10)
+
 
 
 #Zona de botones

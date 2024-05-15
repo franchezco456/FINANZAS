@@ -51,6 +51,4 @@ def egreso(id,categoria,cantidad,cuenta):
          conexion.close()
 
 
-
-
     
