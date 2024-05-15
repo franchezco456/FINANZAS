@@ -9,21 +9,21 @@ c_verde = '#008000'
 c_blanco = '#FFFFFF'
 
 #Crear ventanas y configuracion
-enter= Tk()
-enter.title("Ingreso de Ingresos")
-enter.geometry('700x500+350+20')
-enter.minsize(680,700)
-enter.resizable(width=False, height=False)
-enter.config(bg= c_negro)
+ven= Tk()
+ven.title("Ingreso de gastos")
+ven.geometry('700x500+350+20')
+ven.minsize(680,700)
+ven.resizable(width=False, height=False)
+ven.config(bg= c_negro)
 #Imagenes
 icono = PhotoImage (file='pictures/icono.png')
 icono_back = PhotoImage (file='pictures/back.png')
 icono_water= PhotoImage (file='pictures/water.png')
-enter.iconphoto(True, icono)
+ven.iconphoto(True, icono)
 
 
 #Frame/ventana
-frame_principal=CTkFrame(enter, fg_color= c_negro, width=680, height=670)
+frame_principal=CTkFrame(ven, fg_color= c_negro, width=680, height=670)
 frame_principal.grid(columnspan=1,row=0, sticky='nsew',padx=10, pady=20)
 frame_principal.grid_rowconfigure(0, weight=1)
 frame_principal.grid_columnconfigure(0, weight=1)
@@ -57,9 +57,8 @@ CTkLabel(frame_inferior, corner_radius=12,bg_color=c_azul, text='USUARIO ACTUAL'
 usuario=CTkEntry(frame_inferior,font=("Arial",18),placeholder_text = 'Ingrese El Usuario Aqui',
                    border_color=c_azul, fg_color= c_negro, width=250, height=30).place(x=150, y=20)
 
-
-#Boton
-ingreso = CTkEntry(frame_superior,font=("Arial",18),placeholder_text = 'Ingrese los ingresos aqui',
+#Botones
+ingreso = CTkEntry(frame_superior,font=("Arial",18),placeholder_text = 'Ingrese los gastos aqui',
                    border_color=c_azul, fg_color= c_negro, width=250, height=30)
 ingreso.place(x=20, y=200)
 
@@ -79,4 +78,4 @@ bt_volver.place(x=1, y=1)
 
 
 
-enter.mainloop()
+ven.mainloop()
