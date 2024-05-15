@@ -1,23 +1,33 @@
 import pymysql
+import pandas as pd
 # Conexión a la base de datos
 def connect_to_database():
     return pymysql.connect(host='localhost', user='root', passwd='root', db='usuarios')
 
-
-# Función para filtrar y sumar
-#corregir dependencias
-
-def filtrar_y_sumar(id, CUENTA):
+def cantidad_por_cuenta(id, cuenta):
     conexion = connect_to_database()
     try:
         with conexion.cursor() as cursor:
-            cursor.execute("SELECT SUM(cantidad) FROM transacciones WHERE id = %s AND CUENTA = %s", (id, CUENTA))
+            cursor.execute("SELECT SUM(cantidad) FROM finanzas_user WHERE ID = %s AND CUENTA = %s", (id, cuenta))
             resultado = cursor.fetchone()[0]
             if resultado is None:
-                print("No hay datos para este usuario y cuenta.")
+               return "$0.0"
             else:
-                print(f"La suma total de la columna 'cantidad' para el usuario con id {id} y CUENTA {CUENTA} es: {resultado}")
+               return "$"+resultado
     except pymysql.Error as e:
         print(f"Error: {e}")
     finally:
         conexion.close()
+
+def datos_tabla(id):
+    conexion=connect_to_database()
+    cursor=conexion.cursor()
+    try:
+      cursor.execute("SELECT * FROM finanzas_user WHERE ID = %s",(id,))
+      datos=cursor.fetchall()
+      return datos
+    except pymysql.Error as e:
+        print(f"Error: {e}")
+    finally:
+        conexion.close()
+
