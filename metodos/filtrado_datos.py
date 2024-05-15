@@ -1,5 +1,5 @@
 import pymysql
-import pandas as pd
+
 # Conexión a la base de datos
 def connect_to_database():
     return pymysql.connect(host='localhost', user='root', passwd='root', db='usuarios')
