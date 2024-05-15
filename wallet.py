@@ -1,12 +1,15 @@
 from customtkinter import CTk, CTkFrame, CTkButton, CTkLabel
 from tkinter import *
 from tkinter import Tk, PhotoImage, ttk
+import subprocess
+
 #Lista de Variables
 c_negro = '#010101'
 c_azul  = '#3B83BD'
 c_morado= '#2cb67d'
 c_verde = '#008000'
-
+def open_ingreso():
+    subprocess.Popen(["python","enter.py"])
 #Crear ventanas 
 aplicacion= Tk()
 
@@ -95,7 +98,7 @@ c_frameb.grid(column=0,row=2, sticky='nsew',padx=30, pady=30)
 background_label = Label(c_frameb, image=fondo)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
 bt_ingresos= CTkButton(c_frameb, border_color=c_azul, fg_color= c_negro, 
-                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='INGRESAR INGRESOS', height=40)
+                      hover_color=c_morado, corner_radius=12, border_width=2 ,text='INGRESAR INGRESOS', height=40, command=open_ingreso)
 bt_ingresos.grid(row=0, column=0, pady=12, padx=30)
 
 bt_gastos= CTkButton(c_frameb, border_color=c_azul, fg_color= c_negro, 
